@@ -1,0 +1,29 @@
+<div align="center">
+    <img src="<?php echo e(URL::to('img/logo.png')); ?>" style="display:block">
+    <div class="k-block extended auto" style="width: 25%">
+
+
+        <?php if($errors->has()): ?>
+            <?php foreach($errors->all() as $error): ?>
+                <span class="tag red"> <?php echo e($error); ?></span><br>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if( Session::get('message') ): ?> <div class="message green"><?php echo e(Session::get('message')); ?></div><?php endif; ?>
+        <?php echo e(Form::open(array('url' => 'user/login/submit'))); ?>
+
+        <table class="tableStyling" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>ID:</td>
+                <td><input type="textbox" class="k-textbox" name="email" id="email" value="<?php echo e(old('email')); ?>" style="width:100%"></td>
+            </tr>
+            <tr>
+                <td>ລະຫັດຜ່ານ:</td>
+                <td><input type="password" class="k-textbox" name="password" id="password" style="width:100%"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="right"><button class="k-button k-primary" type="submit">ເຂົ້າສູ່ລະບົບ</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

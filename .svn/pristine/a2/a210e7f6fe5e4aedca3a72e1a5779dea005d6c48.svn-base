@@ -1,0 +1,58 @@
+[2015-12-22 07:52:25] production.ERROR: exception 'InvalidArgumentException' with message 'Command "make" is not defined.
+
+Did you mean one of these?
+    make:controller
+    make:middleware
+    make:migration
+    make:provider
+    make:listener
+    make:request
+    make:console
+    make:command
+    make:seeder
+    make:policy
+    make:event
+    make:model
+    make:test
+    make:job' in /var/www/html/test/vendor/symfony/console/Application.php:511
+Stack trace:
+#0 /var/www/html/test/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->find('make')
+#1 /var/www/html/test/vendor/symfony/console/Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /var/www/html/test/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /var/www/html/test/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2015-12-22 08:55:45] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'oute' not found' in /var/www/html/test/app/Http/routes.php:19
+Stack trace:
+#0 {main}  
+[2015-12-22 08:55:59] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'oute' not found' in /var/www/html/test/app/Http/routes.php:19
+Stack trace:
+#0 {main}  
+[2015-12-22 08:56:28] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'oute' not found' in /var/www/html/test/app/Http/routes.php:19
+Stack trace:
+#0 {main}  
+[2015-12-22 08:56:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'oute' not found' in /var/www/html/test/app/Http/routes.php:19
+Stack trace:
+#0 {main}  
+[2015-12-22 08:57:46] production.ERROR: exception 'InvalidArgumentException' with message 'Command "make:AuthController" is not defined.
+
+Did you mean one of these?
+    make:controller
+    make:test
+    make:request
+    make:migration
+    make:seeder
+    make:middleware
+    make:provider
+    make:policy
+    make:event
+    make:console
+    make:job
+    make:listener
+    make:model
+    make:command' in /var/www/html/test/vendor/symfony/console/Application.php:511
+Stack trace:
+#0 /var/www/html/test/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->find('make:AuthContro...')
+#1 /var/www/html/test/vendor/symfony/console/Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /var/www/html/test/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /var/www/html/test/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
