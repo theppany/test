@@ -4,7 +4,7 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        {!!Html::style(css/style.css')!!}
+        <script type="text/javascript" src="{{ URL::asset('resource/js/jquery.min.js') }}"></script>
         <style>
             html, body {
                 height: 100%;
