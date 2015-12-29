@@ -17,6 +17,10 @@ class HomeController extends Controller
     public function index()
     {
         //
+
+       // $results = DB::select( DB::raw("SELECT TOP (50) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID"));
+
+        return View('welcome');
     }
 
     /**

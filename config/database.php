@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'sqlsrv'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,10 +77,10 @@ return [
 
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
-            'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host'     => env('DB_HOST', '192.168.0.50'),
+            'database' => env('DB_DATABASE', 'System_LaoService'),
+            'username' => env('DB_USERNAME', 'sa'),
+            'password' => env('DB_PASSWORD', '123456'),
             'charset'  => 'utf8',
             'prefix'   => '',
         ],

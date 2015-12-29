@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
+Route::get('ajax/transaction/list','AjaxController@transaction_list');
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
