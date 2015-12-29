@@ -1,5 +1,7 @@
+@extends('layouts.header')
+
 <div align="center">
-    <img src="{{ URL::to('img/logo.png') }}" style="display:block">
+    <img width="100" src="{{URL::asset('resources/assets/img/LogoTKGroup.jpg')}}" style="display:block">
     <div class="k-block extended auto" style="width: 25%">
 
 
@@ -9,7 +11,7 @@
             @endforeach
         @endif
         @if( Session::get('message') ) <div class="message green">{{ Session::get('message') }}</div>@endif
-        {{ Form::open(array('url' => 'user/login/submit')) }}
+
         <table class="tableStyling" cellpadding="0" cellspacing="0" width="100%">
             <tr>
                 <td>ID:</td>
@@ -26,3 +28,4 @@
         </table>
     </div>
 </div>
+@include('layout.footer')
