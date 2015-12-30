@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -22,7 +23,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
+    private $redirectTo = '/';
     /**
      * Create a new authentication controller instance.
      *
@@ -39,6 +40,32 @@ class AuthController extends Controller
 
         return View('auth.login');
     }
+    public function postLogin(Request $request){
+
+
+        $this->validate($request, [
+            $this->loginUsername() => 'required', 'password' => 'required',
+        ]);
+
+
+
+
+
+
+
+
+        //$result = DB::select( DB::raw("SELECT * FROM SysUser WHERE LoginName = '".($userdata['username'])."' AND LoginPassword ='".($userdata['password'])."' AND SyncStatus = 0"));
+
+        //if($result);
+       // return Redirect::to('login');
+    }
+    public function loginUsername(){
+        return property_exists($this, 'username') ? $this->username : 'email';
+    }
+
+
+
+
     /**
      * Get a validator for an incoming registration request.
      *

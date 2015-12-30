@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+
 
 class HomeController extends Controller
 {
@@ -28,6 +31,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+
     public function create()
     {
         //

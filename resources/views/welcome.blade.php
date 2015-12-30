@@ -1,59 +1,57 @@
 
 
 
+@include('layout.header');
 
+<style>
 
+    html #bar_code
+    {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
 
-        <style>
+        text-indent: 0;
+        width: 12.4em;
+        font-size: 2em;
+        text-align:center;
+    }
+    #megaStore {
+        max-width: 600px;
+        margin: 30px auto;
+        padding-top: 30px;
 
-            html .k-textbox
-            {
-                -moz-box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-
-
-                padding-left:0.5em;
-                text-indent: 0;
-                width: 15.4em;
-                font-size: 3em
-            }
-            #megaStore {
-                max-width: 600px;
-                margin: 30px auto;
-                padding-top: 30px;
-
-            }
-            #menu h2 {
-                font-size: 1em;
-                text-transform: uppercase;
-                padding: 5px 10px;
-            }
-            #template img {
-                margin: 5px 20px 0 0;
-                float: left;
-            }
-            #template {
-                width: 380px;
-            }
-            #template ol {
-                float: left;
-                margin: 0 0 0 30px;
-                padding: 10px 10px 0 10px;
-            }
-            #template:after {
-                content: ".";
-                display: block;
-                height: 0;
-                clear: both;
-                visibility: hidden;
-            }
-            #template .k-button {
-                float: left;
-                clear: left;
-                margin: 5px 0 5px 12px;
-            }
-        </style>
+    }
+    #menu h2 {
+        font-size: 1em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+    }
+    #template img {
+        margin: 5px 20px 0 0;
+        float: left;
+    }
+    #template {
+        width: 380px;
+    }
+    #template ol {
+        float: left;
+        margin: 0 0 0 30px;
+        padding: 10px 10px 0 10px;
+    }
+    #template:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    #template .k-button {
+        float: left;
+        clear: left;
+        margin: 5px 0 5px 12px;
+    }
+</style>
 
        <div style="text-align: center">
         <input id="bar_code" class="k-textbox" type="text"/>
@@ -62,8 +60,14 @@
 
     </div>
 
-    <div id="example"">
-        <div id="grid" style="width: 100%;font-size: 18px;"></div>
+    <div id="example">
+
+
+
+<div id="grid" style="width: 49%;float: left;"></div>
+
+<div id="grid2" style="width: 49%;float:right;"></div>
+
 
         <script>
 
@@ -73,11 +77,13 @@
             $(document).ready(function () {
                 $("#menu").kendoMenu();
                 $("#menu").show();
-                load_barcode("");
+                load_barcode("{{URL::to('ajax/transaction/list')}}?barcode=");
+                load_barcode2("{{URL::to('ajax/money/list')}}?barcode=");
 
                 $("#bar_code").keypress(function(e){
                     if(e.which == 13) {
-                        load_barcode($(this).val());
+                        load_barcode("{{URL::to('ajax/transaction/list')}}?barcode="+$(this).val());
+                        load_barcode2("{{URL::to('ajax/money/list')}}?barcode="+$(this).val());
                     }
                 });
 
@@ -86,15 +92,14 @@
             });
 
 
+            function load_barcode2($read){
 
-            function load_barcode(barcode){
-
-                $("#grid").empty();
-                $("#grid").kendoGrid({
+                $("#grid2").empty();
+                $("#grid2").kendoGrid({
                     dataSource: {
                         type: "json",
                         transport: {
-                            read: "{{URL::to('ajax/transaction/list')}}?barcode="+barcode
+                            read:$read
                         },
                         pageSize: 20
                     },
@@ -102,7 +107,59 @@
                     height: 550,
                     filterable:{
 
-                        mode:"row"
+                       multi:true
+                    },
+                    groupable: false,
+                    sortable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        buttonCount: 5
+                    },
+                    columns: [{
+
+                        field: "MemberID",
+                        title: "Member ID",
+                        width: 200
+                    }, {
+                        field: "Net_money",
+                        title: "Net Money",
+                        width:200
+                    }, {
+                        field: "Old_money",
+                        title: "Old Money",
+                        width: 200
+                    }, {
+                        field: "SysDate",
+                        title: "Datetime",
+                        width: 250
+                    },{
+                        field: "WorkerID",
+                        title: "Worker",
+                        width: 250
+                    }]
+                });
+
+
+            }
+
+
+
+            function load_barcode($read){
+
+                $("#grid").empty();
+                $("#grid").kendoGrid({
+                    dataSource: {
+                        type: "json",
+                        transport: {
+                            read:$read
+                        },
+                        pageSize: 20
+                    },
+
+                    height: 550,
+                    filterable:{
+                        multi:true
                     },
                     groupable: false,
                     sortable: true,
@@ -114,7 +171,7 @@
                     columns: [{
 
                         field: "TransactionID",
-                        title: "#",
+                        title: "Transaction ID",
                         width: 200
                     }, {
                         field: "CardID",
@@ -134,3 +191,4 @@
             }
         </script>
 
+@include('layout.footer')

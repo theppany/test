@@ -4,9 +4,13 @@
         <title>Laravel</title>
 
 
+
+        <script src="{{URL::asset('resources/assets/js/jquery.min.js')}}"></script>
+        <script src="{{URL::asset('resources/assets/js/kendo.all.min.js')}}"></script>
+
         <link href="{{URL::asset('resources/assets/styles/kendo.common.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('resources/assets/styles/kendo.rtl.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('resources/assets/styles/kendo.default.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('resources/assets/styles/kendo.silver.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('resources/assets/styles/kendo.dataviz.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('resources/assets/styles/kendo.dataviz.default.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('resources/assets/styles/main.css')}}" rel="stylesheet" type="text/css">
@@ -17,7 +21,7 @@
 
     <div id="example">
         <div id="megaStore">
-            <div style="text-align: center;"><img width="100" src="{{URL::asset('resources/assets/img/LogoTKGroup.jpg')}}"></div>
+            <div style="text-align: center;"><img width="100" src="{{URL::asset('resources/assets/img/logoTKGroup.png')}}"></div>
             <ul id="menu" style="display: none;">
                 <li>
                     Products

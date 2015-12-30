@@ -27,15 +27,39 @@ class AjaxController extends Controller
         $barcode = $request->input('barcode');
 
 
+        $member = DB::select(DB::raw("SELECT * FROM SysMember WHERE ReferenceID = '$barcode'"));
 
-        if(!empty($barcode)){
+        $member_id = (@$member[0]->MemberID);
 
+        if(!empty($member_id)){
 
-            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE CardID = '".$barcode."'"));
+            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE MemberID = '".$member_id."'"));
 
         }else {
 
             $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID"));
+        }
+
+        return Response::json($results);
+    }
+
+
+    public function money_list(Request $request){
+
+        $barcode = $request->input('barcode');
+
+
+        $member = DB::select(DB::raw("SELECT * FROM SysMember WHERE ReferenceID = '$barcode'"));
+
+        $member_id = (@$member[0]->MemberID);
+
+        if(!empty($member_id)){
+
+            $results = DB::select(DB::raw("SELECT TOP (200) * FROM Transaction_Topup WHERE MemberID = '".$member_id."'"));
+
+        }else {
+
+            $results = DB::select(DB::raw("SELECT TOP (200) * FROM Transaction_Topup ORDER BY SysDate DESC"));
         }
 
         return Response::json($results);
