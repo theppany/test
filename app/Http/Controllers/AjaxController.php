@@ -33,11 +33,11 @@ class AjaxController extends Controller
 
         if(!empty($member_id)){
 
-            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE MemberID = '".$member_id."'"));
+            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE MemberID = '".$member_id."'"));
 
         }else {
 
-            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID"));
+            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID"));
         }
 
         return Response::json($results);
@@ -65,6 +65,24 @@ class AjaxController extends Controller
         return Response::json($results);
     }
 
+
+    public function top_up_online_list(Request $request){
+
+        $barcode = $request->input('barcode');
+
+
+
+        if(!empty($barcode)){
+
+            $results = DB::select(DB::raw("SELECT TOP (200) * FROM SysTransactionTopupOnline WHERE ReferenceID = '".$barcode."'"));
+
+        }else {
+
+            $results = DB::select(DB::raw("SELECT TOP (200) * FROM SysTransactionTopupOnline ORDER BY SysDate DESC"));
+        }
+
+        return Response::json($results);
+    }
 
 
     public function member_list(Request $request)
