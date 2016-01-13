@@ -44,7 +44,7 @@ class AjaxController extends Controller
     }
 
 
-    public function money_list(Request $request){
+    public function top_up_list(Request $request){
 
         $barcode = $request->input('barcode');
 
@@ -63,6 +63,26 @@ class AjaxController extends Controller
         }
 
         return Response::json($results);
+    }
+
+
+
+    public function member_list(Request $request)
+    {
+
+        $barcode = $request->input('barcode');
+
+        if (!empty($barcode)) {
+
+
+        $results = DB::select(DB::raw("SELECT MemberID,Net_money,ReferenceID,SysDate FROM SysMember WHERE ReferenceID = '$barcode'"));
+        }else{
+        $results = DB::select(DB::raw("SELECT TOP(200) MemberID,Net_money,ReferenceID,SysDate FROM SysMember ORDER BY SysDate DESC"));
+        }
+
+
+            return Response::json($results);
+
     }
     /**
      * Show the form for creating a new resource.

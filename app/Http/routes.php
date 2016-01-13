@@ -13,7 +13,8 @@
 
 Route::get('/','HomeController@index');
 Route::get('ajax/transaction/list','AjaxController@transaction_list');
-Route::get('ajax/money/list','AjaxController@money_list');
+Route::get('ajax/top_up/list','AjaxController@top_up_list');
+Route::get('ajax/member/list','AjaxController@member_list');
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
