@@ -22,6 +22,7 @@ class AjaxController extends Controller
 
     }
 
+
     public function transaction_list(Request $request){
 
         $barcode = $request->input('barcode');
@@ -33,11 +34,11 @@ class AjaxController extends Controller
 
         if(!empty($member_id)){
 
-            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE MemberID = '".$member_id."'"));
+            $results = DB::select(DB::raw("SELECT TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID WHERE MemberID = '".$member_id."' ORDER BY DatetimeCarIn DESC"));
 
         }else {
 
-            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID"));
+            $results = DB::select(DB::raw("SELECT TOP (200) TransactionID,MemberID,CardID,DatetimeCarIn,DatetimeCarOut,CarTypeName,CarPrice FROM TransactionCarIn INNER JOIN SysCarType ON CarType = SysCarType.CarTypeID ORDER BY DatetimeCarIn DESC"));
         }
 
         return Response::json($results);
@@ -74,7 +75,7 @@ class AjaxController extends Controller
 
         if(!empty($barcode)){
 
-            $results = DB::select(DB::raw("SELECT TOP (200) * FROM SysTransactionTopupOnline WHERE ReferenceID = '".$barcode."'"));
+            $results = DB::select(DB::raw("SELECT TOP (200) * FROM SysTransactionTopupOnline WHERE ReferenceID = '".$barcode."' ORDER BY SysDate DESC"));
 
         }else {
 

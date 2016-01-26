@@ -80,7 +80,7 @@ return [
             'host'     => env('DB_HOST', '192.168.0.50'),
             'database' => env('DB_DATABASE', 'System_LaoService'),
             'username' => env('DB_USERNAME', 'sa'),
-            'password' => env('DB_PASSWORD', '123456'),
+            'password' => env('DB_PASSWORD', '654321@tk'),
             'charset'  => 'utf8',
             'prefix'   => '',
         ],

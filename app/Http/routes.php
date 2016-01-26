@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@index');
+Route::get('/monitor','MonitorController@index');
 Route::get('ajax/transaction/list','AjaxController@transaction_list');
 Route::get('ajax/top_up/list','AjaxController@top_up_list');
 Route::get('ajax/member/list','AjaxController@member_list');
